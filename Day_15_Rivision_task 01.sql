@@ -1,0 +1,65 @@
+-- Student Management System
+
+-- Create Students Table
+CREATE TABLE Students (
+    student_id SERIAL PRIMARY KEY,
+    student_name VARCHAR(100),
+    age INT,
+    gender VARCHAR(10),
+    course VARCHAR(50),
+    city VARCHAR(50),
+    marks DECIMAL(5,2)
+);
+
+-- Insert Records
+INSERT INTO Students (student_name, age, gender, course, city, marks)
+VALUES
+('Prashant',21,'Male','BCA','Noida',85),
+('Priya',20,'Female','BCA','Lucknow',91),
+('Rahul',22,'Male','B.Tech','Delhi',76),
+('Sneha',21,'Female','B.Com','Kanpur',88),
+('Ankit',23,'Male','MBA','Noida',79),
+('Neha',20,'Female','BCA','Gonda',95),
+('Rohit',22,'Male','BCA','Ayodhya',68),
+('Pooja',21,'Female','MBA','Lucknow',83);
+
+-- View Data
+SELECT * FROM Students;
+
+-- WHERE
+SELECT * FROM Students
+WHERE city='Noida';
+
+-- ORDER BY
+SELECT * FROM Students
+ORDER BY marks DESC;
+
+-- GROUP BY
+SELECT course, COUNT(*) AS total_students
+FROM Students
+GROUP BY course;
+
+-- Aggregate Functions
+SELECT
+MAX(marks) AS highest_marks,
+MIN(marks) AS lowest_marks,
+AVG(marks) AS average_marks,
+SUM(marks) AS total_marks
+FROM Students;
+
+-- LIMIT
+SELECT * FROM Students
+ORDER BY marks DESC
+LIMIT 3;
+
+-- UPDATE
+UPDATE Students
+SET marks=90
+WHERE student_id=1;
+
+-- DELETE
+DELETE FROM Students
+WHERE student_id=8;
+
+-- Final View
+SELECT * FROM Students;
